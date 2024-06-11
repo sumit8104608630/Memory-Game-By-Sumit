@@ -192,8 +192,9 @@ else if(score_player1<score_player2&&game_over>11){
     display_winner.innerHTML=`Winner is ${player2}`
 }
 else{
+    if(game_over>11){
     display_win_board.style.display="flex"
-    display_winner.innerHTML=`Draw !`
+    display_winner.innerHTML=`Draw !`}
 }
 }
 })
