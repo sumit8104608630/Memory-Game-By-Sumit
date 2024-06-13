@@ -13,7 +13,11 @@ document.addEventListener("DOMContentLoaded",()=>{
     let display_winner=document.querySelector(".board1")
     let btn=document.querySelector(".btn")
     let image;
+    let display_score_player_1=document.querySelector(".player-1")
+    let display_score_player_2=document.querySelector(".player-2")
     let Restart_button=document.querySelector(".btn1")
+    let current_Players=document.querySelector(".current_player");
+    console.log(current_Players)
     let score_board=document.querySelector(".score_board")
         score_board.style.display="none"
    btn.addEventListener("click",()=>{
@@ -50,13 +54,15 @@ score_board.style.display="flex"
         constructor(player1, player2) {
             this.player1 = player1;
             this.player2 = player2;
-            let display_score_player_1=document.querySelector(".player-1")
-            let display_score_player_2=document.querySelector(".player-2")
+
             display_score_player_1.innerHTML=`${player1} : 0`
             display_score_player_2.innerHTML=`${player2} : 0`
-            
-            console.log(player1, player2);
+                        console.log(player1, player2);
 
+                        current_Players.innerHTML=`Current player is ${player1}`
+
+
+           // console.log(current_player)
             for (let i = 0; i < 24; i++) {
                 dives[i].addEventListener("click", () => {
                     let img = dives[i].children[0];
@@ -71,6 +77,7 @@ score_board.style.display="flex"
                     console.log(first_image, second_image);
 
                     if (a.length == 2) {
+                        console.log(current_player)
                         let result = (() => {
                             if (first_image == 0 && second_image == 12 || first_image == 12 && second_image == 0 ||
                                 first_image == 1 && second_image == 13 || first_image == 13 && second_image == 1 ||
@@ -84,25 +91,18 @@ score_board.style.display="flex"
                                 first_image == 9 && second_image == 21 || first_image == 21 && second_image == 9 ||
                                 first_image == 10 && second_image == 22 || first_image == 22 && second_image == 10 ||
                                 first_image == 11 && second_image == 23 || first_image == 23 && second_image == 11) {
-                                console.log("true");
+                              //  console.log("true");
                                 a = [];
                                 console.log(remove_image[0].id);
-                                remove_image.forEach((e) => {
-                                    setTimeout(() => {
-                                        e.children[0].remove();
-                                        e.style.backgroundColor = "red";
-                                    }, 400);
-
-                                    remove_image = [];
-                                });
+                          
                                 game_over = game_over + 1;
                                 console.log(a);
                                 console.log(a.length);
                                 return true;
-
                             }
                             else {
-                                console.log("false");
+                               // console.log("false");
+
                                 a = [];
                                 let image_hide1 = remove_image[0].children[0];
                                 let image_hide2 = remove_image[1].children[0];
@@ -121,35 +121,62 @@ score_board.style.display="flex"
                         //
                         
                         function score(result) {
-
                             if (result == true) {
                                 if (current_player == true) {
                                     score_player1 = score_player1 + 1;
+                                    remove_image.forEach((e) => {
+                                        setTimeout(() => {
+                                            e.children[0].remove();
+                                            e.style.backgroundColor = "green";
+                                        }, 400);
+    
+                                        remove_image = [];
+                                    });
+                                    
                                 }
                                 else {
+                                   // console.log(current_player)
                                     score_player2 = score_player2 + 1;
+                                          remove_image.forEach((e) => {
+                                    setTimeout(() => {
+                                        e.children[0].remove();
+                                        e.style.backgroundColor = "red";
+                                    }, 400);
+
+                                    remove_image = [];
+                                });
                                 }
+
                             }
                             else {
                                 current_player = !current_player;
-                                console.log(current_player);
+
+                               //console.log(current_player);
                             }
+                            if(current_player==true){
+                                current_Players.innerHTML=`Current player is ${player1}`
+
+                            }
+                            else{
+                                current_Players.innerHTML=`Current player is ${player2}`
+
+                            }
+                            
                             display_score_player_1.innerHTML=`${player1} : ${score_player1}`
                             display_score_player_2.innerHTML=`${player2} : ${score_player2}`
-                            console.log("score 1", score_player1);
-                            console.log("score 2", score_player2);
+                          //  console.log("score 1", score_player1);
+                         // console.log("score 2", score_player2);
                             // console.log(game_over)
                             gameOver(game_over,score_player1,score_player2,player1,player2);
                         }
-
-
-
                         score(result);
-
                     }
                 });
             }
+          
         }
+        
+        
     }
     function generate_random_no(min,max){
         return min+Math.floor(Math.random()*(max-min+1))
@@ -197,5 +224,6 @@ else{
     display_winner.innerHTML=`Draw !`}
 }
 }
+
 })
 
