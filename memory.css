@@ -38,9 +38,10 @@ body{
 .hide{
     display: none !important;
 }
-.grid{
+.grids{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 @media (max-width: 537px) {
 
@@ -53,7 +54,7 @@ body{
         display: flex;
         flex-direction: column;
     }
-    .grid{
+    .grids{
         display: flex;
         justify-content: center;
         flex-direction: row;
