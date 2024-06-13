@@ -35,7 +35,7 @@ score_board.style.display="flex"
     }
    
    })
-    const main_grid=document.querySelector(".grid")
+    const main_grid=document.querySelector(".grids")
     let dives=[]
    // console.log(row)
    for(let i=0;i<4;i++){
