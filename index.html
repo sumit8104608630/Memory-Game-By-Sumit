@@ -9,7 +9,7 @@
 </head>
 <body>
     
-    <div class="main">
+    <div class="main ">
         <div class="absolute result right-1/2 bottom-1/2 translate-x-1/2 translate-y-1/2">
         <div class=" flex bg-opacity-35 bg-blue-700  backdrop-blur rounded-2xl flex-col gap-4 w-auto px-5 py-10"><span class="font-mono text-2xl board1 font-semibold text-white"></span><button class="btn1 bg-white px-5 py-2 text-xl text-gray-500 rounded-2xl font-semibold">Restart</button></div>
         </div>
@@ -18,10 +18,11 @@
             <h1 class="font-semibold text-2xl text-white">Memory Game</h1>
             <span class="  player1"><input id="p1" class="border-none rounded-full px-5 py-2" type="text"  placeholder="Player-1"></span>
             <span class="  player2"><input id="p2" class="rounded-full px-5 py-2" type="text" placeholder="Player-2"></span>
-            <button class="btn bg-white px-5 py-2 text-xl text-gray-500 rounded-2xl font-semibold">Start</button>
+            <button class="btn bg-white px-5 py-2 text-xl text-gray-500 rounded-2xl font-semibold shadow-lg active:shadow-cyan-500/50">Start</button>
             </div>
         </div>
         <div class="flex score_board flex-col font-mono gap-1 font-semibold text-white text-2xl mb-5 py-3 bg-blue-800  w-auto rounded-2xl px-5 bg-opacity-60">
+            <div class="flex justify-center"><span class="current_player"></span></div>
             <span class="player-1"></span>
             <span class="player-2"></span>
         </div>
