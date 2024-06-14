@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     let player1=document.getElementById("p1").value.toUpperCase()
     let player2=document.getElementById("p2").value.toUpperCase()
     
-    if(player1==""&&player2==""){
+    if(player1==""||player2==""){
         alert("Please enter the name")
     }
     else{
